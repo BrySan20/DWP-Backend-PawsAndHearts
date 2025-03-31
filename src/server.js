@@ -2,8 +2,8 @@
 const app = require('./app');
 const http = require('http');
 const socketIo = require('socket.io');
-const port = 3000;
 require('dotenv').config();
+const port = process.env.PORT || 3000;
 
 // Crear el servidor HTTP
 const server = http.createServer(app);
