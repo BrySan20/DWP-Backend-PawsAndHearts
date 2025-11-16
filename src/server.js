@@ -9,7 +9,8 @@ const corsOptions = {
   origin: [
     'https://dwp-frontend-pawsandhearts.onrender.com',
     'http://localhost:5173',
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'http://143.110.196.107' // <--- AÑADE ESTA LÍNEA
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],

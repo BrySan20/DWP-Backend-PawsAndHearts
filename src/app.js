@@ -25,26 +25,27 @@ dotenv.config();
 const app = express();
 
 const corsOptions = app.corsOptions || {
-    origin: [
-      'https://dwp-frontend-pawsandhearts.onrender.com',
-      'http://localhost:5173',
-      'http://localhost:3000'
-    ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-    optionsSuccessStatus: 200
-  };
-  
-  app.use(cors(corsOptions));
-  app.use(bodyParser.json());
+  origin: [
+    'https://dwp-frontend-pawsandhearts.onrender.com',
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'http://143.110.196.107' // <--- AÑADE ESTA LÍNEA
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
 
-  app.use((req, res, next) => {
-    if (req.method === 'OPTIONS') {
-      console.log('Recibida solicitud OPTIONS:', req.headers);
-    }
-    next();
-  });
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+  if (req.method === 'OPTIONS') {
+    console.log('Recibida solicitud OPTIONS:', req.headers);
+  }
+  next();
+});
 
 // Rutas login y registro
 app.use('/api/auth', authRoutes);
